@@ -88,6 +88,10 @@ def process_ingredients(recipes_and_ingredients):
     
     return ingredients
 
+def process_overlapping_ingredients(recipes_and_ingredients):
+    overlapping_ingredients = recipes_and_ingredients.get("overlappingIngredients", [])
+    return overlapping_ingredients
+
 def process_reasoning(recipes_and_ingredients):
     reasoning = recipes_and_ingredients.get("reasoning", "")
     return reasoning

@@ -51,15 +51,18 @@ def get_recipes(request: RecipeRequest):
             process_recipes,
             process_ingredients,
             process_reasoning,
+            process_overlapping_ingredients,
         )
         raw = get_recipes_and_ingredients(request.user_context)
         recipes = process_recipes(raw)
         ingredients = process_ingredients(raw)
         reasoning = process_reasoning(raw)
+        overlapping_ingredients = process_overlapping_ingredients(raw)
         return {
             "recipes": recipes,
             "groceryList": ingredients,
             "reasoning": reasoning,
+            "overlappingIngredients": overlapping_ingredients,
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
