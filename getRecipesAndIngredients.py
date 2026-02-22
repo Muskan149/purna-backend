@@ -47,10 +47,11 @@ def get_recipes_and_ingredients(user_context):
             else:
                 return json.loads("{}")  # json with empty values
 
-            # print(type(response))
-            # print(response_text)
-
-            return json.loads(response_text)
+            data = json.loads(response_text)
+            # Unwrap "output" if the API returned { "output": { groceryList, recipes, reasoning } }
+            if isinstance(data, dict) and "output" in data and isinstance(data["output"], dict):
+                return data["output"]
+            return data
         except json.JSONDecodeError as e:
             last_error = e
             if attempt < max_retries - 1:
