@@ -38,6 +38,8 @@ def get_recipes_and_ingredients(user_context):
 
             response_text = response.output_text
 
+            print(response_text)
+
             # The response should ideally be a JSON object
             # if it is not, find the first { and return the string after it and before the last }
             if "{" in response_text:
