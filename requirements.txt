@@ -1,0 +1,11 @@
+# FastAPI backend
+fastapi
+uvicorn[standard]
+
+# From getRecipesAndIngredients.py
+openai
+python-dotenv
+pandas
+
+# From findSnapStores.py
+requests
